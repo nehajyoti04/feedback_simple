@@ -1,0 +1,5 @@
+feedback_simple.system_settings:
+  route_name: feedback_simple.system_settings
+  title: 'Feedback Simple'
+  description: 'Configure the Feedback Simple tab.'
+  parent: system.themes_page

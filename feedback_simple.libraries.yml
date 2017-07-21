@@ -1,0 +1,4 @@
+feedback_simple:
+  css:
+    base:
+      css/feedback_simple.css: {}

@@ -1,0 +1,4 @@
+name: 'Feedback Simple'
+description: 'A very simple, very light, CSS only Feedback tab.'
+core: 8.x
+type: module

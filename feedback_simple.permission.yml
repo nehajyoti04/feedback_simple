@@ -1,0 +1,3 @@
+administer feedback simple:
+  title: 'Configure the Feedback Simple tab.'
+  restrict access: TRUE

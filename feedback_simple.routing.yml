@@ -1,0 +1,7 @@
+feedback_simple.system_settings:
+  path: /admin/appearance/feedback-simple
+  defaults:
+    _title: 'Feedback Simple'
+    _form: \Drupal\feedback_simple\Form\FeedbackSimpleSettings
+  requirements:
+    _permission: 'administer feedback simple'

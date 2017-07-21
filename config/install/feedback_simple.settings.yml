@@ -1,0 +1,12 @@
+feedback_simple:
+  enabled: TRUE
+  link: contact
+  target: _self
+  class:
+    0: feedback_simple
+  align: right
+  top: 75%
+  image: ''
+  alt: Feedback
+  deny: admin*
+  allow: admin/appearance/feedback-simple
