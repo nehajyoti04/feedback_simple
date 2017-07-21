@@ -1,18 +1,17 @@
 <?php
 
-/**
- * @file
- * Contains \Drupal\feedback_simple\Form\FeedbackSimpleSystemSettings.
- */
-
 namespace Drupal\feedback_simple\Form;
 
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\Core\Render\Element;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
+/**
+ * Class FeedbackSimpleSettings.
+ *
+ * @package Drupal\feedback_simple\Form
+ */
 class FeedbackSimpleSettings extends ConfigFormBase {
 
   /**
@@ -38,6 +37,7 @@ class FeedbackSimpleSettings extends ConfigFormBase {
       $container->get('config.factory')
     );
   }
+
   /**
    * {@inheritdoc}
    */
@@ -52,57 +52,59 @@ class FeedbackSimpleSettings extends ConfigFormBase {
     return ['feedback_simple.settings'];
   }
 
-
+  /**
+   * {@inheritdoc}
+   */
   public function buildForm(array $form, FormStateInterface $form_state) {
     $form = [];
     $form['#tree'] = TRUE;
     $form['feedback_simple'] = [
       '#type' => 'details',
-      '#title' => t('Feedback Simple'),
-      '#description' => t('Configure the Feedback Simple tab.'),
-      '#open' => TRUE
+      '#title' => $this->t('Feedback Simple'),
+      '#description' => $this->t('Configure the Feedback Simple tab.'),
+      '#open' => TRUE,
     ];
     $form['feedback_simple']['enabled'] = [
       '#type' => 'checkbox',
-      '#title' => t('Enabled'),
+      '#title' => $this->t('Enabled'),
       '#default_value' => $this->config->get('feedback_simple')['enabled'],
     ];
     $form['feedback_simple']['link'] = [
       '#type' => 'textfield',
-      '#title' => t('Link'),
-      '#description' => t('Drupal path to visit when clicked.'),
+      '#title' => $this->t('Link'),
+      '#description' => $this->t('Drupal path to visit when clicked.'),
       '#default_value' => $this->config->get('feedback_simple')['link'],
     ];
     $form['feedback_simple']['target'] = [
       '#type' => 'select',
-      '#title' => t('Target'),
-      '#description' => t('Location to open the link.'),
+      '#title' => $this->t('Target'),
+      '#description' => $this->t('Location to open the link.'),
       '#options' => [
-        '_self' => t('Current window'),
-        '_blank' => t('New window'),
+        '_self' => $this->t('Current window'),
+        '_blank' => $this->t('New window'),
       ],
       '#default_value' => $this->config->get('feedback_simple')['target'],
     ];
     $form['feedback_simple']['class'] = [
       '#type' => 'textfield',
-      '#title' => t('Class'),
-      '#description' => t('CSS classes to apply, separated by spaces.'),
+      '#title' => $this->t('Class'),
+      '#description' => $this->t('CSS classes to apply, separated by spaces.'),
       '#default_value' => $this->config->get('feedback_simple')['class'],
     ];
     $form['feedback_simple']['align'] = [
       '#type' => 'select',
-      '#title' => t('Alignment'),
-      '#description' => t('Side of the window to attach to.'),
+      '#title' => $this->t('Alignment'),
+      '#description' => $this->t('Side of the window to attach to.'),
       '#options' => [
-        'left' => t('Left'),
-        'right' => t('Right'),
+        'left' => $this->t('Left'),
+        'right' => $this->t('Right'),
       ],
       '#default_value' => $this->config->get('feedback_simple')['align'],
     ];
     $form['feedback_simple']['top'] = [
       '#type' => 'select',
-      '#title' => t('Top'),
-      '#description' => t('Distance from the top.'),
+      '#title' => $this->t('Top'),
+      '#description' => $this->t('Distance from the top.'),
       '#default_value' => $this->config->get()['top'],
     ];
     for ($i = 0; $i <= 100; $i += 5) {
@@ -111,31 +113,31 @@ class FeedbackSimpleSettings extends ConfigFormBase {
     $form['feedback_simple']['top']['#options'] = $top;
     $form['feedback_simple']['image'] = [
       '#type' => 'textfield',
-      '#title' => t('Image'),
-      '#description' => t('Path to the image.'),
+      '#title' => $this->t('Image'),
+      '#description' => $this->t('Path to the image.'),
       '#default_value' => $this->config->get('feedback_simple')['image'],
     ];
     $form['feedback_simple']['alt'] = [
       '#type' => 'textfield',
-      '#title' => t('Image alt'),
-      '#description' => t('Alternative text.'),
+      '#title' => $this->t('Image alt'),
+      '#description' => $this->t('Alternative text.'),
       '#default_value' => $this->config->get('feedback_simple')['alt'],
     ];
     $form['feedback_simple']['form_denyallow_markup'] = [
-      '#markup' => t('<h3>Visibility rules</h3><p>By default, the Feedback tab
+      '#markup' => $this->t('<h3>Visibility rules</h3><p>By default, the Feedback tab
       shows on every page except on the <em>link</em> set above. Paths can explicity be
-      set to hide or show below, by listing them with wild cards, one per line.</p>')
+      set to hide or show below, by listing them with wild cards, one per line.</p>'),
     ];
     $form['feedback_simple']['deny'] = [
       "#type" => 'textarea',
-      '#title' => t('Deny'),
-      '#description' => t('Hide on these paths.'),
+      '#title' => $this->t('Deny'),
+      '#description' => $this->t('Hide on these paths.'),
       '#default_value' => $this->config->get('feedback_simple')['deny'],
     ];
     $form['feedback_simple']['allow'] = [
       "#type" => 'textarea',
-      '#title' => t('Allow'),
-      '#description' => t('Show on these paths.'),
+      '#title' => $this->t('Allow'),
+      '#description' => $this->t('Show on these paths.'),
       '#default_value' => $this->config->get('feedback_simple')['allow'],
     ];
 

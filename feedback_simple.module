@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @file
  * Module file.
@@ -13,10 +14,10 @@ function feedback_simple_theme($existing, $type, $theme, $path) {
   global $base_url;
   $variables = \Drupal::configFactory()->getEditable('feedback_simple.settings')->get("feedback_simple");
   $image_url = \Drupal::moduleHandler()->getModule('feedback_simple')->getPath() . "/image/feedback_simple.gif";
-  $image = Drupal::service('image.factory')->get($base_url. "/".$image_url);
+  $image = Drupal::service('image.factory')->get($base_url . "/" . $image_url);
   $width = $image->getWidth();
   $height = $image->getHeight();
-  $variables['image'] = $base_url. "/".$image_url;
+  $variables['image'] = $base_url . "/" . $image_url;
   \Drupal::configFactory()->getEditable('feedback_simple.settings')->set("feedback_simple", $variables);
 
   $registry['feedback_simple'] = array(
@@ -40,12 +41,14 @@ function feedback_simple_theme($existing, $type, $theme, $path) {
   return $registry;
 }
 
+/**
+ * Implements hook_page_bottom().
+ */
 function feedback_simple_page_bottom(array &$page_bottom) {
   $page_bottom['feedback_simple'] = [
-    '#theme' => 'feedback_simple'
+    '#theme' => 'feedback_simple',
   ];
 }
-
 
 /**
  * Implements hook_preprocess_feedback_simple().
@@ -72,4 +75,3 @@ function feedback_simple_preprocess_feedback_simple(&$variables) {
 function feedback_simple_page_attachments(&$page) {
   $page['#attached']['library'][] = 'feedback_simple/feedback_simple';
 }
-
