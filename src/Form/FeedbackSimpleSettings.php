@@ -105,7 +105,7 @@ class FeedbackSimpleSettings extends ConfigFormBase {
       '#type' => 'select',
       '#title' => $this->t('Top'),
       '#description' => $this->t('Distance from the top.'),
-      '#default_value' => $this->config->get()['top'],
+      '#default_value' => $this->config->get('feedback_simple')['top'],
     ];
     for ($i = 0; $i <= 100; $i += 5) {
       $top["$i%"] = "$i%";
